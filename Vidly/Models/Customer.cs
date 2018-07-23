@@ -5,11 +5,10 @@ namespace Vidly.Models
 {
     public class Customer
     {
-
+        //Customer
         public int Id { get; set; }
         [Required]
         [StringLength(255)]
-
         public string Name { get; set; }
 
         public bool IsSubscribedToNewsLetter { get; set; }
