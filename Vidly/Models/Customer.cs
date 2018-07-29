@@ -17,6 +17,7 @@ namespace Vidly.Models
 
         public byte MembershipTypeId { get; set; }// this as a forign-key
 
+        [Display(Name = "Date of Birth")]
         public DateTime? DateofBirth { get; set; }
     }
 }

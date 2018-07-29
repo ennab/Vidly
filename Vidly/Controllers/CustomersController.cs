@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Vidly.Models;
-using System.Data.Entity;
 
 namespace Vidly.Controllers
 {
@@ -18,6 +16,11 @@ namespace Vidly.Controllers
         protected override void Dispose(bool disposing)
         {
             _context.Dispose();
+        }
+        public ActionResult New()
+        {
+
+            return View();
         }
         public ViewResult Index()
         {
