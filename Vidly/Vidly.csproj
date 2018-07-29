@@ -200,9 +200,26 @@
     <Compile Include="Migrations\201807152140252_AddingCustomersDateofBirth1.Designer.cs">
       <DependentUpon>201807152140252_AddingCustomersDateofBirth1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807291958408_AddingGenre.cs" />
+    <Compile Include="Migrations\201807291958408_AddingGenre.Designer.cs">
+      <DependentUpon>201807291958408_AddingGenre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807292001255_UpdateingMovieParameters.cs" />
+    <Compile Include="Migrations\201807292001255_UpdateingMovieParameters.Designer.cs">
+      <DependentUpon>201807292001255_UpdateingMovieParameters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807292002203_UpdateingMovieParameters1.cs" />
+    <Compile Include="Migrations\201807292002203_UpdateingMovieParameters1.Designer.cs">
+      <DependentUpon>201807292002203_UpdateingMovieParameters1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807292024261_Genres.cs" />
+    <Compile Include="Migrations\201807292024261_Genres.Designer.cs">
+      <DependentUpon>201807292024261_Genres.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
@@ -273,6 +290,7 @@
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Movies\Index.cshtml" />
     <Content Include="Views\Customers\Details.cshtml" />
+    <Content Include="Views\Movies\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -303,6 +321,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807152140252_AddingCustomersDateofBirth1.resx">
       <DependentUpon>201807152140252_AddingCustomersDateofBirth1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807291958408_AddingGenre.resx">
+      <DependentUpon>201807291958408_AddingGenre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807292001255_UpdateingMovieParameters.resx">
+      <DependentUpon>201807292001255_UpdateingMovieParameters.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807292002203_UpdateingMovieParameters1.resx">
+      <DependentUpon>201807292002203_UpdateingMovieParameters1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807292024261_Genres.resx">
+      <DependentUpon>201807292024261_Genres.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
