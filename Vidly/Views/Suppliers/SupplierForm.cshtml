@@ -1,0 +1,35 @@
+﻿@model Vidly.ViewModels.SupplierFormViewModel
+@{
+    ViewBag.Title = "SupplierForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>
+    @if (Model.Supplier == null)
+    { <text>New </text>}
+    else
+    { <text>Edit </text>}
+    Supplier
+</h2>
+
+@using (Html.BeginForm("Save", "Suppliers"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Supplier.Name)
+        @Html.TextBoxFor(m => m.Supplier.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Supplier.Phone)
+        @Html.TextBoxFor(m => m.Supplier.Phone, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Supplier.StartDate)
+        @Html.TextBoxFor(m => m.Supplier.StartDate, "{0:dd-MM-yyyy }", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Supplier.CityId)
+        @Html.DropDownListFor(m => m.Supplier.CityId, new SelectList(Model.Cities, "Id", "Name"), "Select City", new { @class = "form-control" })
+    </div>
+    @Html.HiddenFor(m => m.Supplier.Id)
+    <button type="submit" class="btn btn-primary">Save</button>
+}
