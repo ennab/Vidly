@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
@@ -67,15 +66,50 @@ namespace Vidly.Controllers
             return View(viewModel);
 
         }
-        public ActionResult Edit(string sortBy, int? pageIndex = 0)
+        public ActionResult New()
+        {
+            var Genres = _context.Genres.ToList();
+            var viewModel = new MovieFormViewModel { Genres = Genres };
+            return View("MovieForm", viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Save(Movie movie)
+        {
+            if (movie.Id == 0) { _context.Movies.Add(movie); }
+            else
+            {
+                var movieInDb = _context.Movies.Single(c => c.Id == movie.Id);
+                movieInDb.Name = movie.Name;
+                movieInDb.DateAdded = movie.DateAdded;
+                movieInDb.ReleaseDate = movie.ReleaseDate;
+                movieInDb.GenreId = movie.GenreId;
+            }
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Movies");
+        }
+        public ActionResult Edit(int id)//(string sortBy, int? pageIndex = 0)
         {
             //http://localhost:50874/Movies/edit/1
             //http://localhost:50874/Movies/edit?id=1
 
-            if (!pageIndex.HasValue) pageIndex = 0;
-            if (String.IsNullOrWhiteSpace(sortBy)) sortBy = "Name";
+            //if (!pageIndex.HasValue) pageIndex = 0;
+            //if (String.IsNullOrWhiteSpace(sortBy)) sortBy = "Name";
 
-            return Content(String.Format("pageIndex={0} sortBy={1}", pageIndex, sortBy));
+            //return Content(String.Format("pageIndex={0} sortBy={1}", pageIndex, sortBy));
+
+            var movie = _context.Movies.SingleOrDefault(c => c.Id == id);
+            if (movie == null) { return HttpNotFound(); }
+
+            var viewModel = new MovieFormViewModel
+            {
+                Movie = movie,
+                Genres = _context.Genres.ToList()
+            };
+
+            return View("MovieForm", viewModel);
+
         }
         [Route("movies/released/{year}/{month:regex(\\d{2}):range(1,12)}")]
         public ActionResult ByReleaseDate(int? year, byte? month)
