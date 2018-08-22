@@ -7,7 +7,7 @@ namespace Vidly.Models
     {
         //Customer
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Please Enter Customer's Name")]
         [StringLength(255)]
         public string Name { get; set; }
 
@@ -17,6 +17,7 @@ namespace Vidly.Models
         [Display(Name = "Membership Type")]
         public byte MembershipTypeId { get; set; }// this as a forign-key
 
+        [Min18IfAMember]
         [Display(Name = "Date of Birth")]
         public DateTime? DateofBirth { get; set; }
     }
